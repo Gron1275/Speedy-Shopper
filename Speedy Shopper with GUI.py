@@ -1,10 +1,10 @@
 import time
 import os
 import wx
-from multiprocessing import *
+from multiprocessing import cpu_count, Pipe, Process, current_process
 
 grocery_list = []
-
+time_completed = 0
 aisle1 = ["aisle1", "bread", "cereal", "cookies"]
 aisle2 = ["aisle2", "butter", "milk", "cream"]
 aisles = [aisle1, aisle2]
@@ -70,7 +70,7 @@ class Home(wx.Frame):
 
     def search(self, event):
         search(grocery_list)
-        wx.Exit()
+        wx.Exit()  # Exits so that the multi-processing can begin. Need to find a work around but this be a temp fix
 
 
 class Scan:
@@ -132,15 +132,17 @@ def create_processes(item):  # Multi-Process scan threaded to different cpu's
 
 
 def search(items):
+    global time_completed
+    start_time = time.time()
     for i in items:
         create_processes(i)
+    time_completed = time.time() - start_time
 
 
 if __name__ == '__main__':
     app = wx.App()
     frame = Home(None).Show()
     app.MainLoop()
-    start_time = time.time()
     print("Amount of CPU's: " + str(cpu_quantity))
     print(requested_aisles)  # Print what item from grocery list is in the aisle
-    print("Time Completed: " + str(time.time() - start_time))
+    print("Time Completed: " + str(time_completed))
