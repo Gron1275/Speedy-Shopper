@@ -5,6 +5,7 @@ import os
 grocery_list = ['bread', 'wine', 'gadgets']
 time_completed = 0
 requested_aisles = []
+requested_aisles_dict = {}
 
 """
 class Home(wx.Frame):
@@ -92,7 +93,7 @@ def initialize(file):
     aisles_full = aisles
 
 class Scan:
-    global requested_aisles
+    global requested_aisles_dict
     global aisles_full
 
     def reg(self, item):
@@ -101,8 +102,8 @@ class Scan:
             if grocery == item:
                 print(grocery)
                 print(aisles_full[grocery] + " From [reg]")
-                if aisles_full[grocery] not in requested_aisles:
-                    requested_aisles.append(aisles_full[grocery])
+                if aisles_full[grocery] not in requested_aisles_dict.keys():
+                    requested_aisles_dict[aisles_full[grocery]] = item
 
         print("Finished: " + "[PID: " +  str(os.getpid()) + "]")
 
@@ -123,5 +124,5 @@ if __name__ == '__main__':
     app.MainLoop()"""
     initialize('item_locations.txt')
     search(grocery_list)
-    print(requested_aisles)  # Print what item from grocery list is in the aisle
+    print(requested_aisles_dict)  # Print what item from grocery list is in the aisle
     print("Time Completed: " + str(time_completed))
