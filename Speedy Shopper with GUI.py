@@ -2,13 +2,10 @@ import time
 import os
 import wx
 from multiprocessing import cpu_count, Pipe, Process, current_process
+from aisles import aisles_full
 
 grocery_list = []
 time_completed = 0
-aisle1 = ["aisle1", "bread", "cereal", "cookies"]
-aisle2 = ["aisle2", "butter", "milk", "cream"]
-aisles = [aisle1, aisle2]
-aisles_rev = [aisle2, aisle1]
 requested_aisles = []
 
 
@@ -75,40 +72,45 @@ class Home(wx.Frame):
 
 class Scan:
     global requested_aisles
+    global aisles_full
 
     def reg(self, item, conn):
         global requested_aisles
         print("Running: " + current_process().name + " [PID: " + str(os.getpid()) + "]")
-        for aisle in aisles:
-            if item in aisle:
-                print(aisle[0] + " From [reg]")
-                if aisle[0] not in requested_aisles:
-                    conn.send(aisle[0])  # Pipes info out of sub-process back into main stream
+        for grocery in aisles_full:
+            if grocery == item:
+                print(grocery)
+                print(aisles_full[grocery] + " From [reg]")
+                if aisles_full[grocery] not in requested_aisles:
+                    conn.send(aisles_full[grocery])  # Pipes info out of sub-process back into main stream
                     conn.close()
+            else:
+                pass
         print("Finished: " + current_process().name)
 
     def rev(self, item, conn):
         print("Running: " + current_process().name + " [PID: " + str(os.getpid()) + "]")
-        for aisle in aisles_rev:
-            if item in aisle:
-                print(aisle[0] + " From [rev]")
-                if aisle[0] not in requested_aisles:
-                    conn.send(aisle[0])  # Pipes info out of sub-process back into main stream
+        for grocery in aisles_full:
+            if grocery == item:
+                print(aisles_full[grocery] + " From [rev]")
+                if aisles_full[grocery] not in requested_aisles:
+                    conn.send(aisles_full[grocery])  # Pipes info out of sub-process back into main stream
                     conn.close()
-        print("Finished: " + current_process().name)
-
-    def sort(self, item):
-        print("Running: " + current_process().name + " [PID: " + str(os.getpid()) + "]")
-        for aisle in aisles:
-            if item in aisle:
-                print(aisle[0] + " From search sort")
-                if aisle[0] not in requested_aisles:
-                    requested_aisles.append(aisle[0])
+            else:
+                pass
         print("Finished: " + current_process().name)
 
 
 scan = Scan()
 cpu_quantity = cpu_count() // 2
+
+
+def search(items):
+    global time_completed
+    start_time = time.time()
+    for i in items:
+        create_processes(i)
+    time_completed = time.time() - start_time
 
 
 def create_processes(item):  # Multi-Process scan threaded to different cpu's
@@ -131,18 +133,9 @@ def create_processes(item):  # Multi-Process scan threaded to different cpu's
         globals()['process%s' % i].join()  # Hold program running until all process jobs are complete
 
 
-def search(items):
-    global time_completed
-    start_time = time.time()
-    for i in items:
-        create_processes(i)
-    time_completed = time.time() - start_time
-
-
 if __name__ == '__main__':
     app = wx.App()
     frame = Home(None).Show()
     app.MainLoop()
-    print("Amount of CPU's: " + str(cpu_quantity))
     print(requested_aisles)  # Print what item from grocery list is in the aisle
     print("Time Completed: " + str(time_completed))
