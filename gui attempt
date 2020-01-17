@@ -13,7 +13,7 @@ class MyFrame2 ( wx.Frame ):
 
 		bSizer1.Add( self.m_simplebook1, 1, wx.EXPAND |wx.ALL, 5 )
 
-		self.m_button1 = wx.Button( self, wx.ID_ANY, u"MyButton", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_button1 = wx.Button( self, wx.ID_ANY, u"OK", wx.DefaultPosition, wx.DefaultSize, 0 )
 		bSizer1.Add( self.m_button1, 0, wx.ALL, 5 )
 
 
