@@ -1,13 +1,13 @@
 import time
 import os
-#import wx
+import wx
 
-grocery_list = ['bread', 'wine', 'gadgets']
+grocery_list = []
 time_completed = 0
 requested_aisles = []
 requested_aisles_dict = {}
 
-"""
+
 class Home(wx.Frame):
     global grocery_list
     def __init__(self, parent):
@@ -37,6 +37,8 @@ class Home(wx.Frame):
         self.m_button3.Bind(wx.EVT_BUTTON, self.append_grocery)
         self.text_box.Bind(wx.EVT_TEXT_ENTER, self.append_grocery)
         self.m_button5.Bind(wx.EVT_BUTTON, self.search)
+        self.m_button5.Bind(wx.EVT_BUTTON, self.onClose)
+
     def __del__(self):
         pass
     # Virtual event handlers, overide them in your derived class
@@ -47,7 +49,36 @@ class Home(wx.Frame):
     def search(self, event):
         search(grocery_list)
         wx.Exit()  # Exits so that the multi-processing can begin. Need to find a work around but this be a temp fix
-"""
+    def onClose(self, event):
+        self.Close()
+
+
+class Output( wx.Frame ):
+	def __init__( self, parent ):
+		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = wx.EmptyString, pos = wx.DefaultPosition, size = wx.Size( 500,500 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
+        
+		self.SetSizeHints( wx.DefaultSize, wx.DefaultSize )
+
+		bSizer1 = wx.BoxSizer( wx.VERTICAL )
+
+		self.m_simplebook1 = wx.Simplebook( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_simplebook1.Enable( False )
+
+
+		bSizer1.Add( self.m_simplebook1, 1, wx.EXPAND |wx.ALL, 5 )
+
+		self.m_button1 = wx.Button( self, wx.ID_ANY, u"OK", wx.DefaultPosition, wx.DefaultSize, 0 )
+		bSizer1.Add( self.m_button1, 0, wx.ALL, 5 )
+
+
+		self.SetSizer( bSizer1 )
+		self.Layout()
+
+		self.Centre( wx.BOTH )
+
+	def __del__( self ):
+		pass
+
 aisles = {}
 aisles_full = {}
 
@@ -107,6 +138,7 @@ back = ["Back:"]
 front = ["Front:"]
 pharmacy = ["Pharmacy:"]
 def sort_aisles():
+    # Sorts groceries into their respective aisles and prints them in order
     for item in requested_aisles_dict.keys():
         for i in range(1, 17):
             if item == f'aisle {i}':
@@ -141,11 +173,15 @@ def sort_aisles():
             print(a)
 
 if __name__ == '__main__':
-    """app = wx.App()
+    app = wx.App()
     frame = Home(None).Show()
-    app.MainLoop()"""
+    app.MainLoop()
     initialize('info.txt')
     search(grocery_list)
     sort_aisles()
     print(requested_aisles_dict)  # Print what item from grocery list is in the aisle
+    app2 = wx.App()
+    frame2 = Output(None).Show()
+    app2.MainLoop()
     print("Time Completed: " + str(time_completed))
+
