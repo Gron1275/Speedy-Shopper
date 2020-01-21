@@ -63,7 +63,6 @@ class Output( wx.Frame ):
 
             bSizer1 = wx.BoxSizer(wx.VERTICAL)
 
-            self.m_staticText2 = wx.StaticText(self, wx.ID_ANY, u"pasta\n\n", wx.DefaultPosition, wx.Size(200, 200), 0)
             counter = 0
             for i in range(1, 17):
                 if globals()['req_aisle%s' % i] != [f'Aisle {i}' + ":"]:
