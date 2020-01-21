@@ -115,9 +115,9 @@ def scan_reg(item):
         if grocery == item:
             print(grocery)
             print(aisles_full[grocery] + " From [reg]")
-            # if aisles_full[grocery] not in requested_aisles_dict.keys():  # take this out for multiple items in aisle
-            requested_aisles_dict[aisles_full[grocery]] = item
-            #  integrate dict requested_aisles = {aisle 1: ['bread', 'wine', etc.], aisle 2: ['cheese']}
+            if aisles_full[grocery] not in requested_aisles_dict:  # take this out for multiple items in aisle
+                requested_aisles_dict[aisles_full[grocery]] = []
+            (requested_aisles_dict[aisles_full[grocery]]).append(item)
     print("Finished: " + "[PID: " + str(os.getpid()) + "]")
 
 
@@ -126,12 +126,9 @@ def search(items):
     output = Output()
     global time_completed
     start_time = time.time()
-    percentage_complete = 1 / len(grocery_list)
     for i in items:
         scan_reg(i)
-        # print("Percent Complete: " + str(output.gauge.GetValue()))
-        # output.gauge.SetValue = output.gauge.GetValue() + percentage_complete
-
+        
     time_completed = time.time() - start_time
 
 
