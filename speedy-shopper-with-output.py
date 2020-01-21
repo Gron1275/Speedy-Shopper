@@ -138,9 +138,11 @@ class Scan:
             if grocery == item:
                 print(grocery)
                 print(aisles_full[grocery] + " From [reg]")
+                '''
                 if aisles_full[grocery] not in requested_aisles_dict.keys():
                     requested_aisles_dict[aisles_full[grocery]] = item
-
+                '''
+                requested_aisles_dict[aisles_full[grocery]] = grocery
         print("Finished: " + "[PID: " + str(os.getpid()) + "]")
 
 
@@ -191,4 +193,5 @@ if __name__ == '__main__':
     app2 = wx.App()
     frame2 = Output(None).Show()
     app2.MainLoop()
+    print(requested_aisles_dict)
     print("Time Completed: " + str(time_completed))
