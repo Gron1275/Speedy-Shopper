@@ -52,32 +52,55 @@ class Home(wx.Frame):
     def onClose(self, event):
         self.Close()
 
+    def __del__(self):
+        pass
 
 class Output( wx.Frame ):
 	def __init__( self, parent ):
-		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = wx.EmptyString, pos = wx.DefaultPosition, size = wx.Size( 500,500 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
-        
-		self.SetSizeHints( wx.DefaultSize, wx.DefaultSize )
+            wx.Frame.__init__(self, parent, id=wx.ID_ANY, title=wx.EmptyString, pos=wx.DefaultPosition, size=wx.Size(578, 574), style=wx.DEFAULT_FRAME_STYLE | wx.TAB_TRAVERSAL)
 
-		bSizer1 = wx.BoxSizer( wx.VERTICAL )
+            self.SetSizeHints(wx.DefaultSize, wx.DefaultSize)
 
-		self.m_simplebook1 = wx.Simplebook( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, 0 )
-		self.m_simplebook1.Enable( False )
+            bSizer1 = wx.BoxSizer(wx.VERTICAL)
+
+            self.m_staticText2 = wx.StaticText(self, wx.ID_ANY, u"pasta\n\n", wx.DefaultPosition, wx.Size(200, 200), 0)
+            counter = 0
+            for i in range(1, 17):
+                if globals()['req_aisle%s' % i] != [f'Aisle {i}' + ":"]:
+                    for a in globals()['req_aisle%s' % i]:
+                        self.m_staticText2 = wx.StaticText(self, wx.ID_ANY, a, wx.Point(-1, counter * 20), wx.Size(200, 200), 0)
+                        counter = counter + 1
+            if hbc != ["Health and Body Care:"]:
+                for a in hbc:
+                    self.m_staticText2 = wx.StaticText(self, wx.ID_ANY, a, wx.Point(-1, counter * 20), wx.Size(200, 200), 0)
+                    counter = counter + 1
+            if back != ["Back:"]:
+                for a in back:
+                    self.m_staticText2 = wx.StaticText(self, wx.ID_ANY, a, wx.Point(-1, counter * 20), wx.Size(200, 200), 0)
+                    counter = counter + 1
+            if front != ["Front:"]:
+                for a in front:
+                    self.m_staticText2 = wx.StaticText(self, wx.ID_ANY, a, wx.Point(-1, counter * 20), wx.Size(200, 200), 0)
+                    counter = counter + 1
+            if pharmacy != ["Pharmacy:"]:
+                for a in pharmacy:
+                    self.m_staticText2 = wx.StaticText(self, wx.ID_ANY, a, wx.Point(-1, counter * 20), wx.Size(200, 200), 0)
+                    counter = counter + 1
+            #self.m_staticText2.SetBackgroundColour(wx.SystemSettings.GetColour(wx.SYS_COLOUR_HIGHLIGHTTEXT))
+
+            #bSizer1.Add(self.m_staticText2, 0, wx.ALL, 5)
+
+            self.SetSizer(bSizer1)
+            self.Layout()
+
+            self.Centre(wx.BOTH)
 
 
-		bSizer1.Add( self.m_simplebook1, 1, wx.EXPAND |wx.ALL, 5 )
-
-		self.m_button1 = wx.Button( self, wx.ID_ANY, u"OK", wx.DefaultPosition, wx.DefaultSize, 0 )
-		bSizer1.Add( self.m_button1, 0, wx.ALL, 5 )
+            def __del__(self):
+                pass
 
 
-		self.SetSizer( bSizer1 )
-		self.Layout()
 
-		self.Centre( wx.BOTH )
-
-	def __del__( self ):
-		pass
 
 aisles = {}
 aisles_full = {}
@@ -155,22 +178,7 @@ def sort_aisles():
         elif item == "aisle pharm":
             pharmacy.append(requested_aisles_dict[item])
 
-    for i in range(1, 17):
-        if globals()['req_aisle%s' % i] != [f'Aisle {i}' + ":"]:
-            for a in globals()['req_aisle%s' % i]:
-                print(a)
-    if hbc != ["Health and Body Care:"]:
-        for a in hbc:
-            print(a)
-    if back != ["Back:"]:
-        for a in back:
-            print(a)
-    if front != ["Front:"]:
-        for a in front:
-            print(a)
-    if pharmacy != ["Pharmacy:"]:
-        for a in pharmacy:
-            print(a)
+
 
 if __name__ == '__main__':
     app = wx.App()
@@ -184,4 +192,3 @@ if __name__ == '__main__':
     frame2 = Output(None).Show()
     app2.MainLoop()
     print("Time Completed: " + str(time_completed))
-
