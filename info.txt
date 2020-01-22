@@ -194,3 +194,158 @@ New Age Coffee
 Energy Drinks
 pharmacy
 Nature's Place Vitamins
+
+produce
+Asparagus
+Broccoli
+Cauliflower
+Cabbage
+Kale
+Carrots
+Celery
+Corn
+Cucumbers
+Garlic
+Green Beans
+Peas
+Lettuce
+Greens
+Salad
+Mushrooms
+Onions
+Vegetables
+Peppers
+Potatoes
+Pumpkins
+Squash
+Tomatoes
+Apples
+Bananas
+Strawberries
+Blueberries
+Berries
+Cherries
+Grapes
+Melons
+Oranges
+Lemons
+Limes
+Grapefruit
+Peaches
+Nectarines
+Plums
+Pears
+Fruit
+Herbs
+Hummus
+
+bakery
+Cakes
+Cheesecakes
+Cookies
+Cupcakes
+Pies
+Bagels
+Bread
+Breakfast Pastries
+Donuts
+Muffins
+Rolls
+Croissants
+Whoopie Pies
+
+deli
+Bologna
+Sliced Cheese
+Sliced Beef
+Sliced Ham
+Sliced Turkey & Chicken
+Italian Deli Meat
+Cheese
+Cheddar Cheese
+Parmesan Cheese
+
+meat
+Bacon
+Hot Dogs
+Sausage
+Chicken
+Frozen Beef Patties
+Frozen Meatballs
+Frozen Sandwich Meat & More
+Frozen Sausage
+Lunch Packs
+Meat Pies
+Packaged Lunchmeat
+Packaged Meats
+Burger Patties & Ground Beef
+Chuck Steaks & Roasts
+Cube & Stew Beef
+Kosher Beef
+Loin Steaks
+Roasts
+Beef
+Ribeye Steaks
+Rib Roasts
+Round Steaks
+Steak Roasts
+Sirloin Steaks
+Sirloin Tips
+Ham Steaks
+Marinated Meat
+Pork
+Pork Butts
+Pork Ribs
+Pork Chops
+Pork Tenderloin
+Pork Roasts
+Smoked Ham
+Veal
+Chicken
+Turkey
+Lamb
+
+seafood
+Fish
+Shrimp
+Clams
+Mussels
+Oysters
+Crab
+Crawfish
+Lobster
+Scallops
+Seafood Sauces
+Seafood Salads
+Seafood Dips
+
+cheese
+Bar Cheese
+Butter
+Margarine
+Cottage Cheese
+Cream Cheese
+Ricotta Cheese
+Shredded Cheese
+Sliced Cheese
+Snack Cheese
+Soy Milk
+Eggs
+Juice
+Lemonade
+Iced Tea
+Orange Juice
+Eggnog
+Half & Half
+Cream
+Milk
+Non Dairy Creamers
+Gelatin
+Pudding
+Whipped Cream
+Biscuit Dough
+Pie Crusts
+Cookie Dough
+Sour Cream
+Yogurt
+
