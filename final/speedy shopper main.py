@@ -47,8 +47,21 @@ class OtherFrame(wx.Frame):
         self.first_output = wx.StaticText(self, wx.ID_ANY, u"Aisles Requested", wx.DefaultPosition, wx.DefaultSize, 0)
         self.first_output.Wrap(-1)
 
+        gSizer1 = wx.GridSizer(0, 2, 0, 0)
+        for key in requested_aisles_dict:
+
+            globals()['self.%s' % key] = wx.StaticText(self, wx.ID_ANY, u"{}".format(str(key).title()), wx.DefaultPosition, wx.DefaultSize, 0)
+            globals()['self.%s' % str(key) + " items"] = wx.StaticText(self, wx.ID_ANY, u"{}".format(str(requested_aisles_dict[key]).title()), wx.DefaultPosition, wx.DefaultSize, 0)
+
+            globals()['self.%s' % key].Wrap(-1)
+            globals()['self.%s' % str(key) + " items"].Wrap(-1)
+
+            gSizer1.Add(globals()['self.%s' % key], 0, wx.ALL, 5)
+            gSizer1.Add(globals()['self.%s' % str(key) + " items"], 0, wx.ALL, 5)
+
         full_box.Add(self.first_output, 0, wx.ALL | wx.ALIGN_CENTER_HORIZONTAL, 5)
 
+        full_box.Add(gSizer1, 1, wx.EXPAND, 5)
         self.SetSizer(full_box)
         self.Layout()
 
@@ -117,7 +130,7 @@ class MainFrame(wx.Frame):
         self.text_input.Clear()
 
     def search(self, event):
-        input_frame = OtherFrame(title="Input")
+        input_frame = OtherFrame(title="Requested Aisles")
         self.Close()
 
 
