@@ -157,11 +157,28 @@ Automotive
 
 Beer
 
-Frozen Foods
+Frozen Snacks
+Frozen Sandwiches
+Frozen Pizza
+Pizza Bites
+Ice
+Ice Cream Cakes
+Frozen Novelties
+Ice Cream
 
-Frozen Foods
+Frozen Goya
+Frozen Pasta
+Frozen Entrees
+Frozen Dinners
+Frozen Vegetables
+Frozen Potatoes
+Frozen Poultry
+Frozen Seafood
 
-Frozen Foods
+Frozen Toppings
+Frozen Juice
+Frozen Breakfast
+Frozen Bread
 
 hbc
 Bar Soap
@@ -185,10 +202,10 @@ Vitamins
 Nature's Place
 front
 Tobacco
-Wine
 back
 Candy
 Iced Tea
+Wine
 New Age Tea
 New Age Coffee
 Energy Drinks
@@ -319,7 +336,7 @@ Seafood Sauces
 Seafood Salads
 Seafood Dips
 
-cheese
+dairy
 Bar Cheese
 Butter
 Margarine
@@ -348,4 +365,3 @@ Pie Crusts
 Cookie Dough
 Sour Cream
 Yogurt
-
