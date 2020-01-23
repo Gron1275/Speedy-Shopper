@@ -211,7 +211,6 @@ New Age Coffee
 Energy Drinks
 pharmacy
 Nature's Place Vitamins
-
 produce
 Asparagus
 Broccoli
@@ -255,7 +254,6 @@ Pears
 Fruit
 Herbs
 Hummus
-
 bakery
 Cakes
 Cheesecakes
@@ -270,7 +268,6 @@ Muffins
 Rolls
 Croissants
 Whoopie Pies
-
 deli
 Bologna
 Sliced Cheese
@@ -281,7 +278,6 @@ Italian Deli Meat
 Cheese
 Cheddar Cheese
 Parmesan Cheese
-
 meat
 Bacon
 Hot Dogs
@@ -321,7 +317,6 @@ Veal
 Chicken
 Turkey
 Lamb
-
 seafood
 Fish
 Shrimp
@@ -335,7 +330,6 @@ Scallops
 Seafood Sauces
 Seafood Salads
 Seafood Dips
-
 dairy
 Bar Cheese
 Butter
