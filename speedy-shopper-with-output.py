@@ -1,3 +1,11 @@
+import time
+import os
+
+import wx
+
+
+
+
 import wx
 
 grocery_list = []
@@ -60,28 +68,6 @@ class OtherFrame(wx.Frame):
         self.first_output.Wrap(-1)
         default_pos_x = 5
         counter = 1
-        for i in range(1, 17):
-            if globals()['req_aisle%s' % i] != [f'Aisle {i}' + ":"]:
-                for a in globals()['req_aisle%s' % i]:
-                    self.m_staticText2 = wx.StaticText(self, wx.ID_ANY, a, wx.Point(default_pos_x, counter * 20),
-                                                       wx.Size(200, 200), 0)
-                    counter = counter + 1
-        if hbc != ["Health and Body Care:"]:
-            for a in hbc:
-                self.m_staticText2 = wx.StaticText(self, wx.ID_ANY, a, wx.Point(default_pos_x, counter * 20), wx.Size(200, 200), 0)
-                counter = counter + 1
-        if back != ['Back:']:
-            for a in back:
-                self.m_staticText2 = wx.StaticText(self, wx.ID_ANY, a, wx.Point(default_pos_x, counter * 20), wx.Size(200, 200), 0)
-                counter = counter + 1
-        if front != ["Front:"]:
-            for a in front:
-                self.m_staticText2 = wx.StaticText(self, wx.ID_ANY, a, wx.Point(default_pos_x, counter * 20), wx.Size(200, 200), 0)
-                counter = counter + 1
-        if pharmacy != ["Pharmacy:"]:
-            for a in pharmacy:
-                self.m_staticText2 = wx.StaticText(self, wx.ID_ANY, a, wx.Point(default_pos_x, counter * 20), wx.Size(200, 200), 0)
-                counter = counter + 1
         if produce != ["Produce:"]:
             for a in produce:
                 self.m_staticText2 = wx.StaticText(self, wx.ID_ANY, a, wx.Point(default_pos_x, counter * 20), wx.Size(200, 200), 0)
@@ -94,6 +80,10 @@ class OtherFrame(wx.Frame):
             for a in deli:
                 self.m_staticText2 = wx.StaticText(self, wx.ID_ANY, a, wx.Point(default_pos_x, counter * 20), wx.Size(200, 200), 0)
                 counter = counter + 1
+        if back != ['Back:']:
+            for a in back:
+                self.m_staticText2 = wx.StaticText(self, wx.ID_ANY, a, wx.Point(default_pos_x, counter * 20), wx.Size(200, 200), 0)
+                counter = counter + 1
         if meat != ["Meat:"]:
             for a in meat:
                 self.m_staticText2 = wx.StaticText(self, wx.ID_ANY, a, wx.Point(default_pos_x, counter * 20), wx.Size(200, 200), 0)
@@ -102,10 +92,29 @@ class OtherFrame(wx.Frame):
             for a in seafood:
                 self.m_staticText2 = wx.StaticText(self, wx.ID_ANY, a, wx.Point(default_pos_x, counter * 20), wx.Size(200, 200), 0)
                 counter = counter + 1
+        for i in range(1, 17):
+            if globals()['req_aisle%s' % i] != [f'Aisle {i}' + ":"]:
+                for a in globals()['req_aisle%s' % i]:
+                    self.m_staticText2 = wx.StaticText(self, wx.ID_ANY, a, wx.Point(default_pos_x, counter * 20),
+                                                       wx.Size(200, 200), 0)
+                    counter = counter + 1
         if dairy != ["Dairy:"]:
             for a in dairy:
                 self.m_staticText2 = wx.StaticText(self, wx.ID_ANY, a, wx.Point(default_pos_x, counter * 20), wx.Size(200, 200), 0)
                 counter = counter + 1
+        if hbc != ["Health and Body Care:"]:
+            for a in hbc:
+                self.m_staticText2 = wx.StaticText(self, wx.ID_ANY, a, wx.Point(default_pos_x, counter * 20), wx.Size(200, 200), 0)
+                counter = counter + 1
+        if pharmacy != ["Pharmacy:"]:
+            for a in pharmacy:
+                self.m_staticText2 = wx.StaticText(self, wx.ID_ANY, a, wx.Point(default_pos_x, counter * 20), wx.Size(200, 200), 0)
+                counter = counter + 1
+        if front != ["Front:"]:
+            for a in front:
+                self.m_staticText2 = wx.StaticText(self, wx.ID_ANY, a, wx.Point(default_pos_x, counter * 20), wx.Size(200, 200), 0)
+                counter = counter + 1
+
 
         full_box.Add(self.first_output, 0, wx.ALL | wx.ALIGN_CENTER_HORIZONTAL, 5)
 
@@ -259,4 +268,3 @@ if __name__ == '__main__':
     print(requested_aisles_dict)  # Print what item from grocery list is in the aisle
 
     print("Time Completed: " + str(time_completed))
-
